@@ -1,0 +1,10 @@
+.card-list {
+  flex-basis: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.card-list--compact {
+  flex-basis: calc(100% - var(--card-details-width) - var(--card-details-x-margin) * 2);
+}
