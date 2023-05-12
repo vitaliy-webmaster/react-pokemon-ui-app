@@ -1,5 +1,6 @@
 {
   "name": "pokemon-ui-app",
+  "homepage": "https://vitaliy-webmaster.github.io/react-pokemon-ui-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,6 +14,7 @@
     "@types/react-dom": "^18.2.4",
     "antd": "^5.4.7",
     "classnames": "^2.3.2",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
@@ -23,6 +25,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eslint": "eslint \"./src/**/**.{js,jsx,ts,tsx}\" --cache --cache-location \"./.cache/eslint/.eslintcache\"",
     "eslint:fix": "npm run eslint -- --fix",
     "prettier": "prettier \"./src/**/**.{js,jsx,ts,tsx,css}\" --check",
