@@ -1,6 +1,6 @@
 {
-  "name": "pokemon-ui-app",
-  "homepage": "https://vitaliy-webmaster.github.io/react-pokemon-ui-app",
+  "name": "react-test-ui-app",
+  "homepage": "https://vitaliy-webmaster.github.io/react-test-ui-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

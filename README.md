@@ -35,3 +35,8 @@ Build the app for production to the `build` folder:
 #### `npm run build`
 
 ---
+
+Deplooy the app to Github Pages:
+#### `npm run deploy`
+
+---
