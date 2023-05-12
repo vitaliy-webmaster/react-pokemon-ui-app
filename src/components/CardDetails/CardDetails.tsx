@@ -1,14 +1,11 @@
 import { FC } from 'react';
 import { Affix, Card } from 'antd';
-
 import './style.css';
 import { useAppSelector } from '../../store/hooks';
 import { selectChosenCardData } from '../../store/cardListSlice/selectors';
 import PropertyTable from '../PropertyTable';
 
-interface Props {}
-
-const CardDetails: FC<Props> = () => {
+const CardDetails: FC = () => {
   const data = useAppSelector(selectChosenCardData);
 
   if (!data) {
@@ -31,7 +28,7 @@ const CardDetails: FC<Props> = () => {
     <Affix className="card-affix" offsetTop={0}>
       <Card
         className="card-details"
-        cover={<img alt={`${name} image`} src={sprites.front_default} />}
+        cover={<img alt={`${name}`} src={sprites.front_default} />}
         bodyStyle={{ padding: '16px' }}
       >
         <div className="card-details__title">

@@ -1,35 +1,40 @@
 import { FC } from 'react';
 import { Button, Card } from 'antd';
-
 import './style.css';
-import { TPokemon } from '../../types';
-import { useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { selectChosenCardId } from '../../store/cardListSlice/selectors';
+import { selectTypeFromCard } from '../../store/cardListSlice';
 import CardLinkWrapper from './CardLinkWrapper';
+import { CardItemProps } from './types';
 
-interface Props {
-  data: TPokemon;
-}
-
-const CardItem: FC<Props> = ({ data }) => {
+const CardItem: FC<CardItemProps> = ({ data }) => {
   const { id, name, types, sprites } = data;
+
+  const dispatch = useAppDispatch();
   const selectedId = useAppSelector(selectChosenCardId);
 
   const tags = types.map((item) => item.type.name);
 
-  // console.log(data.name, data);
+  const handleTagClick = (tag: string) => {
+    dispatch(selectTypeFromCard(tag));
+  };
 
   const cardJSX = (
     <Card
       className="card"
-      cover={<img alt={`${name} image`} src={sprites.front_default} />}
+      cover={<img alt={`${name}`} src={sprites.front_default} />}
       bodyStyle={{ padding: '16px' }}
     >
       <div className="card__title">{name}</div>
       <div className="card__tags">
-        {tags.map((item) => (
-          <Button key={item} type="text" className="card__tag">
-            {item}
+        {tags.map((tag) => (
+          <Button
+            key={tag}
+            type="text"
+            className="card__tag"
+            onClick={handleTagClick.bind(null, tag)}
+          >
+            {tag}
           </Button>
         ))}
       </div>

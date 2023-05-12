@@ -1,16 +1,17 @@
-import { filtedPokemonData } from '../../utils/filtedPokemonData';
-import type { TPokemon, TPokemonResponseData } from '../../types';
+import { filterPokemonData } from '../../utils/filterPokemonData';
+import type { TPokemon, TPokemonResponseData, TTypeResponseData } from '../../types';
+import { API_TYPE_LIST_URL } from '../../constants/API_URL';
 
-export async function fetchListData(): Promise<TPokemonResponseData | null> {
+export async function fetchListData(url: string): Promise<TPokemonResponseData | null> {
   let data: TPokemonResponseData | null = null;
 
   try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=12`);
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error('Unsuccessfull server response');
     }
 
-    /* Initial pokemon's data with name & url only */
+    /* Initial pokemons' data with name & url only */
     const shortData = await response.json();
 
     /* Gather promises to be awaited with Promise.all */
@@ -35,11 +36,31 @@ export async function fetchListData(): Promise<TPokemonResponseData | null> {
 
     data = {
       ...shortData,
-      results: extendedResults.map((item) => filtedPokemonData(item)),
+      results: extendedResults.map((item) => filterPokemonData(item)),
     };
   } catch (err) {
     console.error(
       (err instanceof Error && err.message) || 'Error while fetching pokemon list',
+    );
+  }
+
+  return data;
+}
+
+export async function fetchTypesData(): Promise<TTypeResponseData | null> {
+  let data: TTypeResponseData | null = null;
+
+  try {
+    const response = await fetch(API_TYPE_LIST_URL);
+
+    if (!response.ok) {
+      throw new Error('Unsuccessfull server response');
+    }
+
+    data = await response.json();
+  } catch (err) {
+    console.error(
+      (err instanceof Error && err.message) || 'Error while fetching pokemon types',
     );
   }
 

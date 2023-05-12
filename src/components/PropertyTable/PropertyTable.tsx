@@ -1,16 +1,8 @@
 import { FC } from 'react';
 import './styles.css';
+import type { PropertyTableProps } from './types';
 
-type TableRowData = {
-  name: string;
-  value: string | number;
-};
-
-interface Props {
-  data: TableRowData[];
-}
-
-const PropertyTable: FC<Props> = ({ data }) => {
+const PropertyTable: FC<PropertyTableProps> = ({ data }) => {
   return (
     <table className="property-table">
       <tbody>

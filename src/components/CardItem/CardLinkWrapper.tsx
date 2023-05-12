@@ -1,12 +1,8 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { CardLinkWrapperProps } from './types';
 
-interface Props {
-  id: number;
-  children?: ReactNode;
-}
-
-const CardLinkWrapper: FC<Props> = ({ id, children }) => {
+const CardLinkWrapper: FC<CardLinkWrapperProps> = ({ id, children }) => {
   return (
     <Link className="card-link" to={id.toString()}>
       {children}
