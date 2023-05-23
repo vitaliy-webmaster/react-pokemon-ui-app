@@ -1,10 +1,17 @@
-## Test Application
+## Pokedex App
 
 [![ts-badge](https://img.shields.io/badge/lang-typescript-007bcd.svg?style=flat-square)](https://www.typescriptlang.org/)
 ![eslint-badge](https://img.shields.io/badge/code_quality_linters-eslint_and_stylelint-4a32c3.svg?style=flat-square)
 [![prettier-badge](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-Test application for presentation purposes.
+Application implemented as test task for Teamvoy company. <br />
+Utilizes https://pokeapi.co/ API with latest frontend technologies: Typescript, React 18, React-Router 6, Redux-Toolkit, Reselect and others. <br />
+App's UI is deployed to github-pages and is accessible online.
+
+### API requests 
+
+https://pokeapi.co/api/v2/pokemon/?limit=12 <br />
+https://pokeapi.co/api/v2/type?limit=999
 
 ### Project scripts
 
